@@ -9,15 +9,29 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TokensRouteImport } from './routes/tokens'
+import { Route as SelectRouteImport } from './routes/select'
 import { Route as ModalRouteImport } from './routes/modal'
 import { Route as InputRouteImport } from './routes/input'
 import { Route as GenericContentRouteImport } from './routes/generic-content'
+import { Route as DesignRouteImport } from './routes/design'
+import { Route as ComboboxRouteImport } from './routes/combobox'
 import { Route as CardRouteImport } from './routes/card'
 import { Route as ButtonRouteImport } from './routes/button'
 import { Route as AccordionRouteImport } from './routes/accordion'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TokensRoute = TokensRouteImport.update({
+  id: '/tokens',
+  path: '/tokens',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SelectRoute = SelectRouteImport.update({
+  id: '/select',
+  path: '/select',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ModalRoute = ModalRouteImport.update({
   id: '/modal',
   path: '/modal',
@@ -31,6 +45,16 @@ const InputRoute = InputRouteImport.update({
 const GenericContentRoute = GenericContentRouteImport.update({
   id: '/generic-content',
   path: '/generic-content',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignRoute = DesignRouteImport.update({
+  id: '/design',
+  path: '/design',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComboboxRoute = ComboboxRouteImport.update({
+  id: '/combobox',
+  path: '/combobox',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CardRoute = CardRouteImport.update({
@@ -65,9 +89,13 @@ export interface FileRoutesByFullPath {
   '/accordion': typeof AccordionRoute
   '/button': typeof ButtonRoute
   '/card': typeof CardRoute
+  '/combobox': typeof ComboboxRoute
+  '/design': typeof DesignRoute
   '/generic-content': typeof GenericContentRoute
   '/input': typeof InputRoute
   '/modal': typeof ModalRoute
+  '/select': typeof SelectRoute
+  '/tokens': typeof TokensRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -75,9 +103,13 @@ export interface FileRoutesByTo {
   '/accordion': typeof AccordionRoute
   '/button': typeof ButtonRoute
   '/card': typeof CardRoute
+  '/combobox': typeof ComboboxRoute
+  '/design': typeof DesignRoute
   '/generic-content': typeof GenericContentRoute
   '/input': typeof InputRoute
   '/modal': typeof ModalRoute
+  '/select': typeof SelectRoute
+  '/tokens': typeof TokensRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -86,9 +118,13 @@ export interface FileRoutesById {
   '/accordion': typeof AccordionRoute
   '/button': typeof ButtonRoute
   '/card': typeof CardRoute
+  '/combobox': typeof ComboboxRoute
+  '/design': typeof DesignRoute
   '/generic-content': typeof GenericContentRoute
   '/input': typeof InputRoute
   '/modal': typeof ModalRoute
+  '/select': typeof SelectRoute
+  '/tokens': typeof TokensRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -98,9 +134,13 @@ export interface FileRouteTypes {
     | '/accordion'
     | '/button'
     | '/card'
+    | '/combobox'
+    | '/design'
     | '/generic-content'
     | '/input'
     | '/modal'
+    | '/select'
+    | '/tokens'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -108,9 +148,13 @@ export interface FileRouteTypes {
     | '/accordion'
     | '/button'
     | '/card'
+    | '/combobox'
+    | '/design'
     | '/generic-content'
     | '/input'
     | '/modal'
+    | '/select'
+    | '/tokens'
   id:
     | '__root__'
     | '/'
@@ -118,9 +162,13 @@ export interface FileRouteTypes {
     | '/accordion'
     | '/button'
     | '/card'
+    | '/combobox'
+    | '/design'
     | '/generic-content'
     | '/input'
     | '/modal'
+    | '/select'
+    | '/tokens'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -129,13 +177,31 @@ export interface RootRouteChildren {
   AccordionRoute: typeof AccordionRoute
   ButtonRoute: typeof ButtonRoute
   CardRoute: typeof CardRoute
+  ComboboxRoute: typeof ComboboxRoute
+  DesignRoute: typeof DesignRoute
   GenericContentRoute: typeof GenericContentRoute
   InputRoute: typeof InputRoute
   ModalRoute: typeof ModalRoute
+  SelectRoute: typeof SelectRoute
+  TokensRoute: typeof TokensRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tokens': {
+      id: '/tokens'
+      path: '/tokens'
+      fullPath: '/tokens'
+      preLoaderRoute: typeof TokensRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/select': {
+      id: '/select'
+      path: '/select'
+      fullPath: '/select'
+      preLoaderRoute: typeof SelectRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/modal': {
       id: '/modal'
       path: '/modal'
@@ -155,6 +221,20 @@ declare module '@tanstack/react-router' {
       path: '/generic-content'
       fullPath: '/generic-content'
       preLoaderRoute: typeof GenericContentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/design': {
+      id: '/design'
+      path: '/design'
+      fullPath: '/design'
+      preLoaderRoute: typeof DesignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/combobox': {
+      id: '/combobox'
+      path: '/combobox'
+      fullPath: '/combobox'
+      preLoaderRoute: typeof ComboboxRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/card': {
@@ -201,9 +281,13 @@ const rootRouteChildren: RootRouteChildren = {
   AccordionRoute: AccordionRoute,
   ButtonRoute: ButtonRoute,
   CardRoute: CardRoute,
+  ComboboxRoute: ComboboxRoute,
+  DesignRoute: DesignRoute,
   GenericContentRoute: GenericContentRoute,
   InputRoute: InputRoute,
   ModalRoute: ModalRoute,
+  SelectRoute: SelectRoute,
+  TokensRoute: TokensRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

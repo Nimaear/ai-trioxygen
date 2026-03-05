@@ -10,8 +10,8 @@ Each gets a `src/components/<Name>/` folder, a showcase route, and a sidebar + i
 - [ ] Checkbox
 - [ ] Radio Group
 - [ ] Switch
-- [ ] Select
-- [ ] Combobox (searchable select)
+- [x] Select
+- [x] Combobox (searchable select)
 - [ ] Number Field
 - [ ] Search Field
 - [ ] Textarea
@@ -56,3 +56,5 @@ Each gets a `src/components/<Name>/` folder, a showcase route, and a sidebar + i
 - [x] Card
 - [x] Generic Content
 - [x] Modal
+- [x] Select
+- [x] Combobox
