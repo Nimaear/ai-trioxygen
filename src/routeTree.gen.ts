@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TypographyRouteImport } from './routes/typography'
 import { Route as TokensRouteImport } from './routes/tokens'
 import { Route as SelectRouteImport } from './routes/select'
+import { Route as PhoneNumberInputRouteImport } from './routes/phone-number-input'
 import { Route as ModalRouteImport } from './routes/modal'
 import { Route as LayoutRouteImport } from './routes/layout'
 import { Route as InputRouteImport } from './routes/input'
@@ -37,6 +38,11 @@ const TokensRoute = TokensRouteImport.update({
 const SelectRoute = SelectRouteImport.update({
   id: '/select',
   path: '/select',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PhoneNumberInputRoute = PhoneNumberInputRouteImport.update({
+  id: '/phone-number-input',
+  path: '/phone-number-input',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ModalRoute = ModalRouteImport.update({
@@ -107,6 +113,7 @@ export interface FileRoutesByFullPath {
   '/input': typeof InputRoute
   '/layout': typeof LayoutRoute
   '/modal': typeof ModalRoute
+  '/phone-number-input': typeof PhoneNumberInputRoute
   '/select': typeof SelectRoute
   '/tokens': typeof TokensRoute
   '/typography': typeof TypographyRoute
@@ -123,6 +130,7 @@ export interface FileRoutesByTo {
   '/input': typeof InputRoute
   '/layout': typeof LayoutRoute
   '/modal': typeof ModalRoute
+  '/phone-number-input': typeof PhoneNumberInputRoute
   '/select': typeof SelectRoute
   '/tokens': typeof TokensRoute
   '/typography': typeof TypographyRoute
@@ -140,6 +148,7 @@ export interface FileRoutesById {
   '/input': typeof InputRoute
   '/layout': typeof LayoutRoute
   '/modal': typeof ModalRoute
+  '/phone-number-input': typeof PhoneNumberInputRoute
   '/select': typeof SelectRoute
   '/tokens': typeof TokensRoute
   '/typography': typeof TypographyRoute
@@ -158,6 +167,7 @@ export interface FileRouteTypes {
     | '/input'
     | '/layout'
     | '/modal'
+    | '/phone-number-input'
     | '/select'
     | '/tokens'
     | '/typography'
@@ -174,6 +184,7 @@ export interface FileRouteTypes {
     | '/input'
     | '/layout'
     | '/modal'
+    | '/phone-number-input'
     | '/select'
     | '/tokens'
     | '/typography'
@@ -190,6 +201,7 @@ export interface FileRouteTypes {
     | '/input'
     | '/layout'
     | '/modal'
+    | '/phone-number-input'
     | '/select'
     | '/tokens'
     | '/typography'
@@ -207,6 +219,7 @@ export interface RootRouteChildren {
   InputRoute: typeof InputRoute
   LayoutRoute: typeof LayoutRoute
   ModalRoute: typeof ModalRoute
+  PhoneNumberInputRoute: typeof PhoneNumberInputRoute
   SelectRoute: typeof SelectRoute
   TokensRoute: typeof TokensRoute
   TypographyRoute: typeof TypographyRoute
@@ -233,6 +246,13 @@ declare module '@tanstack/react-router' {
       path: '/select'
       fullPath: '/select'
       preLoaderRoute: typeof SelectRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/phone-number-input': {
+      id: '/phone-number-input'
+      path: '/phone-number-input'
+      fullPath: '/phone-number-input'
+      preLoaderRoute: typeof PhoneNumberInputRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/modal': {
@@ -327,6 +347,7 @@ const rootRouteChildren: RootRouteChildren = {
   InputRoute: InputRoute,
   LayoutRoute: LayoutRoute,
   ModalRoute: ModalRoute,
+  PhoneNumberInputRoute: PhoneNumberInputRoute,
   SelectRoute: SelectRoute,
   TokensRoute: TokensRoute,
   TypographyRoute: TypographyRoute,
