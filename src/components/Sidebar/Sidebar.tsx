@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import { ChevronDown, ChevronsUpDown, Compass, LayoutTemplate, MousePointerClick, Palette, PanelTop, Search, SlidersHorizontal, Type } from 'lucide-react'
+import { Baseline, ChevronDown, ChevronsUpDown, Compass, Layout, LayoutTemplate, MousePointerClick, Palette, PanelTop, Search, SlidersHorizontal, Type } from 'lucide-react'
 import { ThemeToggle } from '@components/ThemeToggle/ThemeToggle'
 import {
   brand,
@@ -21,6 +21,8 @@ const DOCS = [
 ] as const
 
 const COMPONENTS = [
+  { to: '/typography', label: 'Typography', icon: <Baseline size={14} /> },
+  { to: '/layout', label: 'Layout', icon: <Layout size={14} /> },
   { to: '/button', label: 'Button', icon: <MousePointerClick size={14} /> },
   { to: '/input', label: 'Text Field', icon: <Type size={14} /> },
   { to: '/select', label: 'Select', icon: <ChevronsUpDown size={14} /> },

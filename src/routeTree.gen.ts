@@ -9,9 +9,11 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TypographyRouteImport } from './routes/typography'
 import { Route as TokensRouteImport } from './routes/tokens'
 import { Route as SelectRouteImport } from './routes/select'
 import { Route as ModalRouteImport } from './routes/modal'
+import { Route as LayoutRouteImport } from './routes/layout'
 import { Route as InputRouteImport } from './routes/input'
 import { Route as GenericContentRouteImport } from './routes/generic-content'
 import { Route as DesignRouteImport } from './routes/design'
@@ -22,6 +24,11 @@ import { Route as AccordionRouteImport } from './routes/accordion'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TypographyRoute = TypographyRouteImport.update({
+  id: '/typography',
+  path: '/typography',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TokensRoute = TokensRouteImport.update({
   id: '/tokens',
   path: '/tokens',
@@ -35,6 +42,11 @@ const SelectRoute = SelectRouteImport.update({
 const ModalRoute = ModalRouteImport.update({
   id: '/modal',
   path: '/modal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LayoutRoute = LayoutRouteImport.update({
+  id: '/layout',
+  path: '/layout',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InputRoute = InputRouteImport.update({
@@ -93,9 +105,11 @@ export interface FileRoutesByFullPath {
   '/design': typeof DesignRoute
   '/generic-content': typeof GenericContentRoute
   '/input': typeof InputRoute
+  '/layout': typeof LayoutRoute
   '/modal': typeof ModalRoute
   '/select': typeof SelectRoute
   '/tokens': typeof TokensRoute
+  '/typography': typeof TypographyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -107,9 +121,11 @@ export interface FileRoutesByTo {
   '/design': typeof DesignRoute
   '/generic-content': typeof GenericContentRoute
   '/input': typeof InputRoute
+  '/layout': typeof LayoutRoute
   '/modal': typeof ModalRoute
   '/select': typeof SelectRoute
   '/tokens': typeof TokensRoute
+  '/typography': typeof TypographyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -122,9 +138,11 @@ export interface FileRoutesById {
   '/design': typeof DesignRoute
   '/generic-content': typeof GenericContentRoute
   '/input': typeof InputRoute
+  '/layout': typeof LayoutRoute
   '/modal': typeof ModalRoute
   '/select': typeof SelectRoute
   '/tokens': typeof TokensRoute
+  '/typography': typeof TypographyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -138,9 +156,11 @@ export interface FileRouteTypes {
     | '/design'
     | '/generic-content'
     | '/input'
+    | '/layout'
     | '/modal'
     | '/select'
     | '/tokens'
+    | '/typography'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -152,9 +172,11 @@ export interface FileRouteTypes {
     | '/design'
     | '/generic-content'
     | '/input'
+    | '/layout'
     | '/modal'
     | '/select'
     | '/tokens'
+    | '/typography'
   id:
     | '__root__'
     | '/'
@@ -166,9 +188,11 @@ export interface FileRouteTypes {
     | '/design'
     | '/generic-content'
     | '/input'
+    | '/layout'
     | '/modal'
     | '/select'
     | '/tokens'
+    | '/typography'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -181,13 +205,22 @@ export interface RootRouteChildren {
   DesignRoute: typeof DesignRoute
   GenericContentRoute: typeof GenericContentRoute
   InputRoute: typeof InputRoute
+  LayoutRoute: typeof LayoutRoute
   ModalRoute: typeof ModalRoute
   SelectRoute: typeof SelectRoute
   TokensRoute: typeof TokensRoute
+  TypographyRoute: typeof TypographyRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/typography': {
+      id: '/typography'
+      path: '/typography'
+      fullPath: '/typography'
+      preLoaderRoute: typeof TypographyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tokens': {
       id: '/tokens'
       path: '/tokens'
@@ -207,6 +240,13 @@ declare module '@tanstack/react-router' {
       path: '/modal'
       fullPath: '/modal'
       preLoaderRoute: typeof ModalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/layout': {
+      id: '/layout'
+      path: '/layout'
+      fullPath: '/layout'
+      preLoaderRoute: typeof LayoutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/input': {
@@ -285,9 +325,11 @@ const rootRouteChildren: RootRouteChildren = {
   DesignRoute: DesignRoute,
   GenericContentRoute: GenericContentRoute,
   InputRoute: InputRoute,
+  LayoutRoute: LayoutRoute,
   ModalRoute: ModalRoute,
   SelectRoute: SelectRoute,
   TokensRoute: TokensRoute,
+  TypographyRoute: TypographyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
