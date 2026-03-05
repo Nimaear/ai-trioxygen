@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import { LayoutTemplate, MousePointerClick, SlidersHorizontal, Type } from 'lucide-react'
+import { ChevronDown, LayoutTemplate, MousePointerClick, PanelTop, SlidersHorizontal, Type } from 'lucide-react'
 import { ThemeToggle } from '@components/ThemeToggle/ThemeToggle'
 import {
   brand,
@@ -20,6 +20,8 @@ const COMPONENTS = [
   { to: '/input', label: 'Text Field', icon: <Type size={14} /> },
   { to: '/card', label: 'Card', icon: <LayoutTemplate size={14} /> },
   { to: '/generic-content', label: 'Generic Content', icon: <SlidersHorizontal size={14} /> },
+  { to: '/modal', label: 'Modal', icon: <PanelTop size={14} /> },
+  { to: '/accordion', label: 'Accordion', icon: <ChevronDown size={14} /> },
 ] as const
 
 export function Sidebar() {

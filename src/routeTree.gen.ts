@@ -9,13 +9,20 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ModalRouteImport } from './routes/modal'
 import { Route as InputRouteImport } from './routes/input'
 import { Route as GenericContentRouteImport } from './routes/generic-content'
 import { Route as CardRouteImport } from './routes/card'
 import { Route as ButtonRouteImport } from './routes/button'
+import { Route as AccordionRouteImport } from './routes/accordion'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ModalRoute = ModalRouteImport.update({
+  id: '/modal',
+  path: '/modal',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InputRoute = InputRouteImport.update({
   id: '/input',
   path: '/input',
@@ -36,6 +43,11 @@ const ButtonRoute = ButtonRouteImport.update({
   path: '/button',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AccordionRoute = AccordionRouteImport.update({
+  id: '/accordion',
+  path: '/accordion',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -50,60 +62,87 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/accordion': typeof AccordionRoute
   '/button': typeof ButtonRoute
   '/card': typeof CardRoute
   '/generic-content': typeof GenericContentRoute
   '/input': typeof InputRoute
+  '/modal': typeof ModalRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/accordion': typeof AccordionRoute
   '/button': typeof ButtonRoute
   '/card': typeof CardRoute
   '/generic-content': typeof GenericContentRoute
   '/input': typeof InputRoute
+  '/modal': typeof ModalRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/accordion': typeof AccordionRoute
   '/button': typeof ButtonRoute
   '/card': typeof CardRoute
   '/generic-content': typeof GenericContentRoute
   '/input': typeof InputRoute
+  '/modal': typeof ModalRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/accordion'
     | '/button'
     | '/card'
     | '/generic-content'
     | '/input'
+    | '/modal'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/button' | '/card' | '/generic-content' | '/input'
+  to:
+    | '/'
+    | '/about'
+    | '/accordion'
+    | '/button'
+    | '/card'
+    | '/generic-content'
+    | '/input'
+    | '/modal'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/accordion'
     | '/button'
     | '/card'
     | '/generic-content'
     | '/input'
+    | '/modal'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AccordionRoute: typeof AccordionRoute
   ButtonRoute: typeof ButtonRoute
   CardRoute: typeof CardRoute
   GenericContentRoute: typeof GenericContentRoute
   InputRoute: typeof InputRoute
+  ModalRoute: typeof ModalRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/modal': {
+      id: '/modal'
+      path: '/modal'
+      fullPath: '/modal'
+      preLoaderRoute: typeof ModalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/input': {
       id: '/input'
       path: '/input'
@@ -132,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ButtonRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/accordion': {
+      id: '/accordion'
+      path: '/accordion'
+      fullPath: '/accordion'
+      preLoaderRoute: typeof AccordionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -152,10 +198,12 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AccordionRoute: AccordionRoute,
   ButtonRoute: ButtonRoute,
   CardRoute: CardRoute,
   GenericContentRoute: GenericContentRoute,
   InputRoute: InputRoute,
+  ModalRoute: ModalRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

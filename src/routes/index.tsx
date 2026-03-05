@@ -1,5 +1,5 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
-import { ArrowRight, Check, LayoutTemplate, MousePointerClick, Save, SlidersHorizontal, Type } from 'lucide-react'
+import { ArrowRight, Check, ChevronDown, LayoutTemplate, MousePointerClick, PanelTop, Save, SlidersHorizontal, Type } from 'lucide-react'
 import { Button } from '@components/Button/Button'
 import { Card, CardBody } from '@components/Card/Card'
 import { Heading, Paragraph, Text } from '@components/Typography'
@@ -90,6 +90,47 @@ const COMPONENTS = [
       </div>
     ),
   },
+  {
+    to: '/modal',
+    label: 'Modal',
+    description: 'Overlay · focus trap · 3 sizes · controlled API',
+    icon: <PanelTop size={14} />,
+    preview: (
+      <div style={{ width: '100%', maxWidth: '220px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+        <div style={{ height: '10px', borderRadius: '4px', backgroundColor: 'var(--color-border-default, #D1E2EC)', width: '50%' }} />
+        <div style={{ height: '7px', borderRadius: '4px', backgroundColor: 'var(--color-border-subtle, #E8F0F5)', width: '85%' }} />
+        <div style={{ height: '7px', borderRadius: '4px', backgroundColor: 'var(--color-border-subtle, #E8F0F5)', width: '70%' }} />
+        <div style={{ display: 'flex', gap: '6px', marginTop: '4px' }}>
+          <div style={{ height: '20px', borderRadius: '9999px', backgroundColor: 'var(--color-border-default, #D1E2EC)', width: '52px' }} />
+          <div style={{ height: '20px', borderRadius: '9999px', backgroundColor: 'var(--color-primary-base, #074670)', width: '52px' }} />
+        </div>
+      </div>
+    ),
+  },
+  {
+    to: '/accordion',
+    label: 'Accordion',
+    description: 'Single or multi-expand · disabled items · default open',
+    icon: <ChevronDown size={14} />,
+    preview: (
+      <div style={{ width: '100%', maxWidth: '220px', display: 'flex', flexDirection: 'column', gap: '1px' }}>
+        {[['60%', true], ['85%', false], ['70%', false]].map(([w, expanded], i) => (
+          <div key={i} style={{ borderRadius: '4px', overflow: 'hidden', border: '1px solid var(--color-border-subtle, #E8F0F5)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '6px 8px', backgroundColor: expanded ? 'var(--color-bg-subtle, #F4F8FA)' : 'transparent' }}>
+              <div style={{ height: '8px', borderRadius: '4px', backgroundColor: 'var(--color-border-default, #D1E2EC)', width: w as string }} />
+              <div style={{ width: '8px', height: '8px', borderRadius: '2px', backgroundColor: 'var(--color-border-default, #D1E2EC)', transform: expanded ? 'rotate(180deg)' : 'none' }} />
+            </div>
+            {expanded && (
+              <div style={{ padding: '4px 8px 6px', display: 'flex', flexDirection: 'column', gap: '3px' }}>
+                <div style={{ height: '6px', borderRadius: '3px', backgroundColor: 'var(--color-border-subtle, #E8F0F5)', width: '90%' }} />
+                <div style={{ height: '6px', borderRadius: '3px', backgroundColor: 'var(--color-border-subtle, #E8F0F5)', width: '75%' }} />
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    ),
+  },
 ] as const
 
 function App() {
@@ -129,7 +170,7 @@ function App() {
       {/* ── Highlights ── */}
       <div className={highlights}>
         <div className={highlightItem}>
-          <span className={highlightValue}>4</span>
+          <span className={highlightValue}>6</span>
           <span className={highlightLabel}>Components</span>
         </div>
         <div className={highlightItem}>
