@@ -7,6 +7,7 @@ import {
   ShowcaseSection,
   ShowcaseStack,
 } from '@/styles/Showcase'
+import { Stack } from '@/components/layout/Stack'
 
 export const Route = createFileRoute('/accordion')({ component: AccordionPage })
 
@@ -127,10 +128,9 @@ function AccordionPage() {
       </ShowcaseSection>
 
       <ShowcaseSection label="Usage">
-        <CodeBlock>
-          {`import { Accordion } from '@components/Accordion/Accordion'
-
-// Single expand (default)
+        <Stack>
+          <CodeBlock>{`import { Accordion } from '@components/Accordion/Accordion'`}</CodeBlock>
+          <CodeBlock>{`// Single expand (default)
 <Accordion>
   <Accordion.Item id="q1">
     <Accordion.Trigger>Question one</Accordion.Trigger>
@@ -140,23 +140,20 @@ function AccordionPage() {
     <Accordion.Trigger>Question two</Accordion.Trigger>
     <Accordion.Panel>Answer two</Accordion.Panel>
   </Accordion.Item>
-</Accordion>
-
-// Allow multiple panels open at once
+</Accordion>`}</CodeBlock>
+          <CodeBlock>{`// Allow multiple panels open at once
 <Accordion allowsMultipleExpanded>
   ...
-</Accordion>
-
-// Pre-expand items by id
+</Accordion>`}</CodeBlock>
+          <CodeBlock>{`// Pre-expand items by id
 <Accordion defaultExpandedKeys={['q1']}>
   ...
-</Accordion>
-
-// Disable an individual item
+</Accordion>`}</CodeBlock>
+          <CodeBlock>{`// Disable an individual item
 <Accordion.Item id="q3" isDisabled>
   ...
-</Accordion.Item>`}
-        </CodeBlock>
+</Accordion.Item>`}</CodeBlock>
+        </Stack>
       </ShowcaseSection>
     </ShowcasePage>
   )

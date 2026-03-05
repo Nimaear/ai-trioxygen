@@ -13,6 +13,7 @@ import {
   ShowcaseRow,
   ShowcaseSection,
 } from '@/styles/Showcase'
+import { Stack } from '@/components/layout/Stack'
 
 export const Route = createFileRoute('/generic-content')({ component: GenericContentPage })
 
@@ -264,10 +265,9 @@ function GenericContentPage() {
       </ShowcaseSection>
 
       <ShowcaseSection label="Usage">
-        <CodeBlock>
-          {`import { GenericContent } from '@components/GenericContent/GenericContent'
-
-<GenericContent data={data}>
+        <Stack>
+          <CodeBlock>{`import { GenericContent } from '@components/GenericContent/GenericContent'`}</CodeBlock>
+          <CodeBlock>{`<GenericContent data={data}>
   {/* Renders headline directly */}
   <GenericContent.Headline as="h2" />
 
@@ -304,8 +304,8 @@ function GenericContentPage() {
       ))
     }
   </GenericContent.Actions>
-</GenericContent>`}
-        </CodeBlock>
+</GenericContent>`}</CodeBlock>
+        </Stack>
       </ShowcaseSection>
     </ShowcasePage>
   )

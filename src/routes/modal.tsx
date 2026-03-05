@@ -11,6 +11,7 @@ import {
   ShowcaseRow,
   ShowcaseSection,
 } from '@/styles/Showcase'
+import { Stack } from '@/components/layout/Stack'
 
 export const Route = createFileRoute('/modal')({ component: ModalPage })
 
@@ -191,11 +192,10 @@ function ModalPage() {
       </ShowcaseSection>
 
       <ShowcaseSection label="Usage">
-        <CodeBlock>
-          {`import { Modal } from '@components/Modal/Modal'
-import { Button } from '@components/Button/Button'
-
-// Uncontrolled (trigger-based)
+        <Stack>
+          <CodeBlock>{`import { Modal } from '@components/Modal/Modal'
+import { Button } from '@components/Button/Button'`}</CodeBlock>
+          <CodeBlock>{`// Uncontrolled (trigger-based)
 <Modal>
   <Modal.Trigger>
     <Button variant="secondary">
@@ -217,9 +217,8 @@ import { Button } from '@components/Button/Button'
       </Button>
     </Modal.Footer>
   </Modal.Panel>
-</Modal>
-
-// Controlled
+</Modal>`}</CodeBlock>
+          <CodeBlock>{`// Controlled
 const [open, setOpen] = useState(false)
 
 <Button onPress={() => setOpen(true)}>
@@ -228,8 +227,8 @@ const [open, setOpen] = useState(false)
 
 <Modal isOpen={open} onOpenChange={setOpen}>
   <Modal.Panel>...</Modal.Panel>
-</Modal>`}
-        </CodeBlock>
+</Modal>`}</CodeBlock>
+        </Stack>
       </ShowcaseSection>
     </ShowcasePage>
   )

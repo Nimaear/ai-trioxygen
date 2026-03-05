@@ -1,4 +1,4 @@
-import { globalStyle, keyframes, style } from '@vanilla-extract/css'
+import { keyframes, style } from '@vanilla-extract/css'
 import { vars } from '@/theme'
 
 export const fadeUp = keyframes({
@@ -112,21 +112,15 @@ export const sectionLine = style({
 // ─── Code block ────────────────────────────────────────────────────────────
 
 export const codeBlock = style({
-  backgroundColor: vars.color.bg.muted,
   border: `1px solid ${vars.color.border.default}`,
   borderRadius: vars.borderRadius.md,
   padding: `${vars.space.sm} ${vars.space.md}`,
   fontFamily: vars.fontFamily.mono,
   fontSize: vars.fontSize.sm,
-  color: vars.color.text.muted,
   overflowX: 'auto',
   lineHeight: vars.lineHeight.relaxed,
-  whiteSpace: 'pre',
+  margin: 0,
 })
-
-globalStyle(`${codeBlock} .kw`, { color: vars.color.primary.base })
-globalStyle(`${codeBlock} .str`, { color: vars.color.status.success })
-globalStyle(`${codeBlock} .cmt`, { color: vars.color.border.strong })
 
 // ─── Matrix ────────────────────────────────────────────────────────────────
 

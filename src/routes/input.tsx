@@ -11,6 +11,7 @@ import {
   ShowcaseSection,
   ShowcaseStack,
 } from '@/styles/Showcase'
+import { Stack } from '@/components/layout/Stack'
 
 export const Route = createFileRoute('/input')({ component: InputPage })
 
@@ -31,7 +32,10 @@ function SubscribeDemo() {
         <Button
           size="md"
           variant="secondary"
-          onPress={() => { setValue(''); setSubmitted(false) }}
+          onPress={() => {
+            setValue('')
+            setSubmitted(false)
+          }}
         >
           Reset
         </Button>
@@ -65,8 +69,9 @@ function InputPage() {
   return (
     <ShowcasePage>
       <ShowcaseHero name="Input">
-        Three sizes aligned to the Button scale, full keyboard and screen-reader support via
-        React Aria. Supports labels, descriptions, validation, and all standard HTML input types.
+        Three sizes aligned to the Button scale, full keyboard and screen-reader
+        support via React Aria. Supports labels, descriptions, validation, and
+        all standard HTML input types.
       </ShowcaseHero>
 
       <ShowcaseSection label="Size scale">
@@ -113,27 +118,24 @@ function InputPage() {
       </ShowcaseSection>
 
       <ShowcaseSection label="Usage">
-        <CodeBlock>
-          <span className="kw">import</span>{' { Input } '}
-          <span className="kw">from</span>{' '}
-          <span className="str">'@components/Input'</span>
-          {'\\n\\n'}
-          <span className="cmt">{'// basic'}</span>{'\\n'}
-          {'<Input label="Name" placeholder="Jane Smith" />'}
-          {'\\n\\n'}
-          <span className="cmt">{'// small with description'}</span>{'\\n'}
-          {'<Input\\n  size='}<span className="str">"sm"</span>
-          {'\\n  label='}<span className="str">"Search"</span>
-          {'\\n  type='}<span className="str">"search"</span>
-          {'\\n  description='}<span className="str">"Results update as you type."</span>
-          {'\\n/>'}
-          {'\\n\\n'}
-          <span className="cmt">{'// invalid with error'}</span>{'\\n'}
-          {'<Input\\n  label='}<span className="str">"Email"</span>
-          {'\\n  isInvalid={!isValid}'}
-          {'\\n  errorMessage='}<span className="str">"Enter a valid email address."</span>
-          {'\\n/>'}
-        </CodeBlock>
+        <Stack>
+          <CodeBlock>{`import { Input } from '@components/Input'`}</CodeBlock>
+          <CodeBlock>{`// basic
+<Input label="Name" placeholder="Jane Smith" />`}</CodeBlock>
+          <CodeBlock>{`// small with description
+<Input
+  size="sm"
+  label="Search"
+  type="search"
+  description="Results update as you type."
+/>`}</CodeBlock>
+          <CodeBlock>{`// invalid with error
+<Input
+  label="Email"
+  isInvalid={!isValid}
+  errorMessage="Enter a valid email address."
+/>`}</CodeBlock>
+        </Stack>
       </ShowcaseSection>
     </ShowcasePage>
   )

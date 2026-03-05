@@ -1,5 +1,6 @@
 import { Fragment } from 'react'
 import type React from 'react'
+import ShikiHighlighter from 'react-shiki/web'
 import { Sidebar } from '@components/Sidebar/Sidebar'
 import {
   codeBlock,
@@ -94,8 +95,26 @@ export function ShowcaseSection({ label, children }: ShowcaseSectionProps) {
 
 // ─── CodeBlock ─────────────────────────────────────────────────────────────
 
-export function CodeBlock({ children }: { children: React.ReactNode }) {
-  return <div className={codeBlock}>{children}</div>
+interface CodeBlockProps {
+  children: string
+  language?: string
+}
+
+const SHIKI_THEME = { light: 'github-light', dark: 'github-dark' }
+
+export function CodeBlock({ children, language = 'tsx' }: CodeBlockProps) {
+  return (
+    <ShikiHighlighter
+      language={language}
+      theme={SHIKI_THEME}
+      defaultColor="light-dark()"
+      showLanguage={false}
+      addDefaultStyles={false}
+      className={codeBlock}
+    >
+      {children.trim()}
+    </ShikiHighlighter>
+  )
 }
 
 // ─── ShowcaseMatrix ────────────────────────────────────────────────────────

@@ -11,6 +11,7 @@ import {
   ShowcaseRow,
   ShowcaseSection,
 } from '@/styles/Showcase'
+import { Stack } from '@/components/layout/Stack'
 
 export const Route = createFileRoute('/card')({ component: CardPage })
 
@@ -169,15 +170,13 @@ function CardPage() {
       </ShowcaseSection>
 
       <ShowcaseSection label="Usage">
-        <CodeBlock>
-          {`import { Card, CardHeader, CardBody, CardFooter } from '@components/Card/Card'
-
-// Simple card with size shorthand
+        <Stack>
+          <CodeBlock>{`import { Card, CardHeader, CardBody, CardFooter } from '@components/Card/Card'`}</CodeBlock>
+          <CodeBlock>{`// Simple card with size shorthand
 <Card variant="elevated" size="lg">
   Plain content
-</Card>
-
-// Composed card
+</Card>`}</CodeBlock>
+          <CodeBlock>{`// Composed card
 <Card variant="outline">
   <CardHeader>
     <h3>Title</h3>
@@ -190,8 +189,8 @@ function CardPage() {
     <Button size="sm" variant="secondary">Cancel</Button>
     <Button size="sm">Save</Button>
   </CardFooter>
-</Card>`}
-        </CodeBlock>
+</Card>`}</CodeBlock>
+        </Stack>
       </ShowcaseSection>
     </ShowcasePage>
   )
